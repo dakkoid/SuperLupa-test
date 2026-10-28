@@ -22,7 +22,7 @@
 @font-face{font-family:"Montserrat";font-weight:900;font-display:swap;src:url(fonts/montserrat-cyrillic-900-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:"Montserrat";font-weight:900;font-display:swap;src:url(fonts/montserrat-latin-900-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2212,U+00D7}
 /* Wide, product-page layout: the 3D loupe is the hero, the film comes with chapters,
-   then a before/after pair and the numbers. Sections are indexed like the loupe's own HUD. */
+   then the ad, the product cards and how to use it. Sections are indexed like the loupe's own HUD. */
 :root {
   --bg: #0E1012;
   --bg-2: #15181B;
@@ -109,17 +109,6 @@ section { padding-block: 44px; border-top: 1px solid var(--line); }
 .chapters button[aria-current="true"] span { color: var(--accent); }
 .sound { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; margin: 14px 0 0; }
 
-/* before / after */
-.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.pair figure { margin: 0; background: var(--bg-2); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
-.pair img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
-.pair figcaption { padding: 14px 16px 18px; }
-.pair .lbl { font: 900 clamp(18px, 5vw, 28px)/1 var(--font); letter-spacing: -.01em; margin: 0; }
-.pair .sub { font: 700 13px/1.3 var(--font); color: var(--muted); margin: 6px 0 0; }
-.pair .txt { font-size: 14px; color: var(--muted); margin: 10px 0 0; }
-.pair figure.now { border-color: rgba(95, 212, 255, .45); }
-.pair figure.now .lbl { color: var(--accent); }
-
 /* product ad banner */
 .ad { position: relative; display: grid; gap: 0; border-radius: 28px; overflow: hidden; border: 1px solid rgba(95, 212, 255, .35);
   background: radial-gradient(90% 70% at 100% 0%, rgba(95, 212, 255, .16), rgba(95, 212, 255, 0) 60%), linear-gradient(160deg, #1A2026, #111417 70%); }
@@ -181,7 +170,6 @@ footer a:hover { color: var(--fg); }
   section { padding-block: 72px; }
   .film { grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: 48px; }
   .chapters button { font-size: 17px; min-height: 60px; }
-  .pair { gap: 20px; }
   .ad { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
   .ad .pic img { max-height: none; position: absolute; inset: 0; }
   .ad .pic { min-height: 560px; }
@@ -241,7 +229,7 @@ footer a:hover { color: var(--fg); }
         <div>
           <ol class="chapters" aria-label="Главы ролика">
             <li><button type="button" data-t="0"><span>0:00</span>Фокус на деталях</button></li>
-            <li><button type="button" data-t="3.2"><span>0:03</span>Было и стало</button></li>
+            <li><button type="button" data-t="3.2"><span>0:03</span>Обычная лупа и умная</button></li>
             <li><button type="button" data-t="7"><span>0:07</span>Интерфейс на стекле</button></li>
             <li><button type="button" data-t="9.6"><span>0:10</span>Масштаб от 2× до 20×</button></li>
             <li><button type="button" data-t="14.6"><span>0:15</span>Прозрачный экран</button></li>
@@ -281,22 +269,8 @@ footer a:hover { color: var(--fg); }
       </article>
     </section>
 
-    <section aria-labelledby="pair-h">
-      <div class="head"><b>03</b><h2 id="pair-h">Было и стало</h2></div>
-      <div class="pair">
-        <figure>
-          <img src="img/old.jpg" alt="Обычная лупа над листом" width="640" height="640">
-          <figcaption><p class="lbl">Было</p><p class="sub">Обычная лупа</p><p class="txt">Просто увеличивает.</p></figcaption>
-        </figure>
-        <figure class="now">
-          <img src="img/new.jpg" alt="Умная лупа: на стекле подписи «Лист», «Жилкование», «Ткань» и переключатель масштаба" width="640" height="640">
-          <figcaption><p class="lbl">Стало</p><p class="sub">Лупа будущего</p><p class="txt">Понимает, что вы видите.</p></figcaption>
-        </figure>
-      </div>
-    </section>
-
     <section id="info" aria-labelledby="info-h">
-      <div class="head"><b>04</b><h2 id="info-h">О продукте</h2></div>
+      <div class="head"><b>03</b><h2 id="info-h">О продукте</h2></div>
       <div class="cards">
         <article class="card">
           <div class="top"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M8 10.5h5M10.5 8v5"/></svg></span><span class="tag">Увеличение</span></div>
@@ -349,7 +323,7 @@ footer a:hover { color: var(--fg); }
     </section>
 
     <section aria-labelledby="how-h">
-      <div class="head"><b>05</b><h2 id="how-h">Как пользоваться</h2></div>
+      <div class="head"><b>04</b><h2 id="how-h">Как пользоваться</h2></div>
       <ol class="steps">
         <li><h3>Наведите лупу</h3><p>Поднесите её к листу, ткани, монете — к любому предмету.</p></li>
         <li><h3>Выберите масштаб</h3><p>Коснитесь 2×, 5×, 10× или 20× на стекле — изображение плавно приблизится.</p></li>
